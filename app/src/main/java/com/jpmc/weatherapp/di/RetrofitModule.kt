@@ -2,7 +2,10 @@ package com.jpmc.weatherapp.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jpmc.weatherapp.repository.WeatherRepository
+import com.jpmc.weatherapp.repository.WeatherRepositoryImpl
 import com.jpmc.weatherapp.retrofit.OpenWeatherMapService
+import com.jpmc.weatherapp.retrofit.OpenWeatherMapServiceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,5 +36,10 @@ object RetrofitModule {
         return retrofit
             .build()
             .create(OpenWeatherMapService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideWeatherRepository(openWeatherMapService: OpenWeatherMapService):WeatherRepository{
+        return WeatherRepositoryImpl(openWeatherMapService)
     }
 }
