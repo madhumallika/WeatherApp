@@ -1,6 +1,6 @@
 package com.jpmc.weatherapp.data
 
 data class WeatherResponse(
-    val cityname:String,
+    val name:String,
     val temperature: Double
 )

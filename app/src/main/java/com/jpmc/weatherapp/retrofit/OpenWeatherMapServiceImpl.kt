@@ -1,5 +1,6 @@
 package com.jpmc.weatherapp.retrofit
 
+import com.jpmc.weatherapp.data.WeatherData
 import com.jpmc.weatherapp.data.WeatherResponse
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -15,7 +16,7 @@ class OpenWeatherMapServiceImpl @Inject constructor(): OpenWeatherMapService {
     override suspend fun getWeatherData(
         cityName: String,
         apiKey: String
-    ): Response<WeatherResponse> {
+    ): Response<WeatherData> {
         return apiService.getWeatherData(cityName,apiKey)
     }
 }
